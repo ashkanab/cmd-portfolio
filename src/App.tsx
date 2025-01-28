@@ -2,6 +2,7 @@
 import Interface from "./components/Interface.tsx";
 import './App.css';
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
                 <Interface />
             </div>
 
+            <SpeedInsights/>
             <Analytics />
         </>
     )
