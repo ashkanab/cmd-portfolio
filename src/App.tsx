@@ -1,7 +1,7 @@
 // import {useState, useEffect} from 'react';
 import Interface from "./components/Interface.tsx";
 import './App.css';
-
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
 
@@ -10,6 +10,8 @@ function App() {
             <div id="terminal">
                 <Interface />
             </div>
+
+            <Analytics />
         </>
     )
 }
