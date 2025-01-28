@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('SF Mono Regular'), url('./assets/fonts/SFMonoRegular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF Mono';
+    font-style: italic;
+    font-weight: 400;
+    src: local('SF Mono Regular Italic'), url('./assets/fonts/SFMonoRegularItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: 500;
+    src: local('SF Mono Medium'), url('./assets/fonts/SFMonoMedium.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF Mono';
+    font-style: italic;
+    font-weight: 500;
+    src: local('SF Mono Medium Italic'), url('./assets/fonts/SFMonoMediumItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: bold;
+    src: local('SF Mono Bold'), url('./assets/fonts/SFMonoBold.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF Mono';
+    font-style: italic;
+    font-weight: bold;
+    src: local('SF Mono Bold Italic'), url('./assets/fonts/SFMonoBoldItalic.woff') format('woff');
+}
+
+:root {
+    --font-size-small: 0.875rem;  /* 14px */
+    --font-size-medium: 1rem;     /* 16px */
+    --font-size-large: 1.25rem;   /* 20px */
+    --font-size-xlarge: 1.5rem;   /* 24px */
+}
+
+#interface {
+    font-family: 'SF Mono', monospace;
+    font-size: var(--font-size-small);
+    padding: .2rem .2rem;
+    cursor: text;
+}
+
+.prompt .system {
+    display: inline;
+    overflow-wrap: break-word;
+}
+
+
+.prompt .user-input {
+    display: inline;
+    white-space: pre-wrap;
+}
+
+#autocomplete {
+    color: #4f4f4f;
+}
+
+.visitor-lbl, .sign-lbl, .host-lbl {
+    font-weight: bold;
+}
+
+.visitor-lbl {
+    color: #8c0000;
+}
+
+.text-yellow {
+    color: #9f9f00;
+}
+
+.text-blue {
+    color: #0085af;
+}
+
+.text-magenta {
+    color: #dc00dc;
+}
+
+ul.list li .key {
+    color: #9f9f00;
+}
+
+ul li {
+    margin-bottom: .4rem;
+}
+
+ul.full-w li {
+    display: flex;
+    align-items: center;
+}
+
+ul.full-w li hr {
+    flex-grow: 1;
+    margin: 9px 1rem 0;
+    border-style: dotted;
+    border-width: 2px;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+ul.normal span.key {
+    width: 12rem;
+    display: inline-block;
+}
