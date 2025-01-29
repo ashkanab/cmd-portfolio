@@ -52,6 +52,10 @@
     --font-size-xlarge: 1.5rem;   /* 24px */
 }
 
+body{
+    /*max-height: 100vh;*/
+}
+
 #interface {
     font-family: 'SF Mono', monospace;
     font-size: var(--font-size-small);

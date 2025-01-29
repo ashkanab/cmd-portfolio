@@ -11,7 +11,12 @@ const Interface: React.FC = () => {
     const [pressedKeys, setPressedKeys] = useState<string>('');
     const [capsLock, setCapsLock] = useState<boolean>(false);
     const [autocomplete, setAutocomplete] = useState<null | string>(null);
+    const [inputForm, setInputForm] = useState('');
 
+    // Handle changes in the input field
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputForm(event.target.value); // Update state with input value
+    };
 
     const addToHistory = (history: History) => {
         setHistory(prevArray => [...prevArray, history]);
@@ -21,7 +26,7 @@ const Interface: React.FC = () => {
         if (input === '') {
             setAutocomplete(null)
         } else {
-            const command = getCommands.find((cmd) => cmd.name.startsWith(input));
+            const command = getCommands.find((cmd) => cmd.name.toLowerCase().startsWith(input.toLowerCase()));
             if (command) {
                 setAutocomplete(command.name);
             } else {
@@ -36,7 +41,7 @@ const Interface: React.FC = () => {
         if (input !== null) {
 
             const index = getCommands.findIndex((cmd) => {
-                return cmd.name === input;
+                return cmd.name.toLowerCase() === input.toLowerCase();
             })
 
             if (index !== -1) {
@@ -53,6 +58,7 @@ const Interface: React.FC = () => {
         return () => {
             setInput(null);
             setAutocomplete(null)
+            setInputForm('')
         }
     }, [input]);
 
@@ -65,7 +71,7 @@ const Interface: React.FC = () => {
                 // behavior: 'smooth',
             });
 
-            const specialKeys = ['Shift', 'Space', 'Tab', 'Enter', 'Backspace', 'Alt', 'Meta', 'CapsLock', 'Control', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Escape'];
+            const specialKeys = ['Shift', 'Space', 'Tab', 'Enter', 'Backspace', 'Alt', 'Meta', 'CapsLock', 'Control', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Escape', 'Unidentified'];
 
             if (specialKeys.includes(e.key)) {
 
@@ -136,6 +142,17 @@ const Interface: React.FC = () => {
                     <Prompt key={-1} input={pressedKeys} autocomplete={autocomplete}/>
                 }
             </HistoryContext.Provider>
+
+            <div
+                className="w-full absolute flex bottom-0 left-0 items-center">
+                <input type="text" name="input" value={inputForm} onChange={handleInputChange} id="price"
+                       className="bg-white w-full py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6  rounded-md pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-600"
+                       placeholder="Write a prompt, or type 'help'"/>
+                <button type="button"
+                        onClick={() => setInput(inputForm)}
+                        className="text-base bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
+                >Enter</button>
+            </div>
         </div>
     );
 }
