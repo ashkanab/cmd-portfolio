@@ -77,7 +77,7 @@ const HeyWeather = () => {
                 ## Website
                 <br/>
                 <br/>
-                - <a href="https://heyweatherapp.com" target="_blank">(https://heyweatherapp.com)</a>
+                - https://heyweatherapp.com
                 <br/>
                 <br/>
             </p>

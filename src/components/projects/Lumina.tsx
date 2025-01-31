@@ -72,7 +72,7 @@ const Lumina = () => {
                 ## Website
                 <br/>
                 <br/>
-                - <a href="https://Lumina.gcoapps.com" target="_blank">(https://Lumina.gcoapps.com)</a>
+                - https://Lumina.gcoapps.com
                 <br/>
                 <br/>
             </p>

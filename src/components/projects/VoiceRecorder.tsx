@@ -5,7 +5,7 @@ const VoiceRecorder = () => {
     return (
         <Container>
             <p>
-                # VoiceRecorder AI – AI-Powered Voice-to-Text App (Lead Developer)
+                # VoiceRecorder AI – AI-Powered Voice-to-Text App
                 <br/>
                 <br/>
 
@@ -74,7 +74,7 @@ const VoiceRecorder = () => {
                 ## Website
                 <br/>
                 <br/>
-                - <a href="https://airecorder.gcoapps.com" target="_blank">(https://airecorder.gcoapps.com/)</a>
+                - https://airecorder.gcoapps.com
                 <br/>
                 <br/>
             </p>

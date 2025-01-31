@@ -92,7 +92,7 @@ const Nakhchin = () => {
                 ## Website
                 <br/>
                 <br/>
-                - <a href="https://nakhchinapp.ir" target="_blank">(https://nakhchinapp.ir)</a>
+                - https://nakhchinapp.ir
                 <br/>
                 <br/>
             </p>
