@@ -7,7 +7,10 @@ const List: React.FC<{ items: ListItem[], type?: string}> = ({items, type = 'def
 
     switch (type){
         case 'full-w':
-            classes = "full-w"
+            classes = 'full-w';
+            break;
+        case 'default':
+            classes = 'default';
             break;
         default:
             classes = 'normal'

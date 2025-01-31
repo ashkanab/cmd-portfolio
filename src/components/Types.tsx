@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface History {
-    prompt: string;
+    prompt: string | null;
     output: React.ReactNode;
     visible: boolean;
 }
@@ -10,6 +10,7 @@ export interface Command {
     description: string;
     component: React.FC;
     isSubcommand?: boolean;
+    delay?: number;
 }
 
 export interface ListItem {

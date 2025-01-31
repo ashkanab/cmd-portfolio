@@ -3,6 +3,7 @@ import Prompt from "./Prompt.tsx";
 import {History} from "./Types.tsx";
 import getCommands from "./Commands.tsx";
 import HistoryContext from "./HistoryContext.tsx";
+import Logs from "./elements/Logs.tsx";
 
 const Interface: React.FC = () => {
 
@@ -12,6 +13,24 @@ const Interface: React.FC = () => {
     const [capsLock, setCapsLock] = useState<boolean>(false);
     const [autocomplete, setAutocomplete] = useState<null | string>(null);
     const [inputForm, setInputForm] = useState('');
+    const [showPrompt, setShowPrompt] = useState<boolean>(false)
+    let showInput = false;
+
+    useEffect(() => {
+
+        const checkDevice = () => {
+            const isSmallScreen = window.matchMedia("(max-width: 1024px)").matches;
+            const isMobileUserAgent = /Mobi|Android|Tablet|iPad|iPhone/i.test(
+                navigator.userAgent
+            );
+            showInput = isSmallScreen && isMobileUserAgent;
+        };
+
+        checkDevice();
+        window.addEventListener("resize", checkDevice);
+
+        return () => window.removeEventListener("resize", checkDevice);
+    }, []);
 
     // Handle changes in the input field
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +40,23 @@ const Interface: React.FC = () => {
     const addToHistory = (history: History) => {
         setHistory(prevArray => [...prevArray, history]);
     }
+    useEffect(() => {
+        addToHistory({
+            prompt: null,
+            output: <Prompt key={0} input={null} output={<Logs/>}/>,
+            visible: true
+        });
+
+        const timeout = setTimeout(() => {
+            setShowPrompt(true)
+        }, 3001);
+
+        return () => {
+            clearTimeout(timeout);
+            setHistory([]);
+            setShowPrompt(false);
+        };
+    }, []);
 
     const checkAutoComplete = (input: string) => {
         if (input === '') {
@@ -45,8 +81,15 @@ const Interface: React.FC = () => {
             })
 
             if (index !== -1) {
-                const CommandComponent = getCommands[index].component;
-                addToHistory({prompt: input, output: <CommandComponent/>, visible: true});
+                const command = getCommands[index];
+                const Component = command.component;
+                addToHistory({prompt: input, output: <Component/>, visible: true});
+                if(command.delay != undefined && command.delay > 0){
+                    setShowPrompt(false);
+                    setTimeout(() => {
+                        setShowPrompt(true);
+                    }, command.delay);
+                }
             } else if (input.trim() === '') {
                 addToHistory({prompt: '', output: '', visible: true})
             } else {
@@ -57,8 +100,8 @@ const Interface: React.FC = () => {
 
         return () => {
             setInput(null);
-            setAutocomplete(null)
-            setInputForm('')
+            setAutocomplete(null);
+            setInputForm('');
         }
     }, [input]);
 
@@ -139,19 +182,22 @@ const Interface: React.FC = () => {
                 }
 
                 {
-                    <Prompt key={-1} input={pressedKeys} autocomplete={autocomplete}/>
+                    showPrompt ?
+                        <Prompt key={-1} input={pressedKeys} autocomplete={autocomplete}/>
+                        : null
                 }
             </HistoryContext.Provider>
 
             <div
-                className="w-full absolute flex bottom-0 left-0 items-center">
+                className="w-full absolute flex bottom-0 left-0 items-center" hidden={!showInput}>
                 <input type="text" name="input" value={inputForm} onChange={handleInputChange} id="price"
                        className="bg-white w-full py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6  rounded-md pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-600"
                        placeholder="Write a prompt, or type 'help'"/>
                 <button type="button"
                         onClick={() => setInput(inputForm)}
                         className="text-base bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
-                >Enter</button>
+                >Enter
+                </button>
             </div>
         </div>
     );
