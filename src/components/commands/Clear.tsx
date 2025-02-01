@@ -1,4 +1,4 @@
-import {useContext, useRef} from "react";
+import {useContext, useEffect, useRef} from "react";
 import HistoryContext from "../HistoryContext.tsx";
 import {History} from "../Types.tsx";
 
@@ -26,7 +26,9 @@ const ClearCommand = () => {
         items = items.slice(0, index).concat(hiddenHistory);
     }
 
-    setHistory(items)
+    useEffect(() => {
+        setHistory(items)
+    }, []);
 
     return '';
 }

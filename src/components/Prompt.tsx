@@ -21,13 +21,11 @@ const Prompt: React.FC<{
                             <span>{input}
                                 {
                                     autocomplete ?
-                                        <span id="autocomplete">
-                                    {autocomplete.slice(input?.length)}
-                                </span>
+                                        <span id="autocomplete">{autocomplete.slice(input?.length)}</span>
                                         :
                                         null
                                 }
-                    </span>
+                            </span>
                         </p>
                     </div>
             }

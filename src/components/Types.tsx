@@ -14,6 +14,6 @@ export interface Command {
 }
 
 export interface ListItem {
-    key: string;
+    key: React.ReactNode;
     value: React.ReactNode;
 }

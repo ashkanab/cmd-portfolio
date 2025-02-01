@@ -12,7 +12,7 @@ const HistoryCommand = () => {
     const count = currentHistory.length - 1;
     let items: string[] = [];
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 1; i < count; i++) {
 
         if (currentHistory[i].prompt === ''){
             continue

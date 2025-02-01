@@ -9,7 +9,7 @@ const HelpCommand = () => {
 
     return (
         <Container>
-            <List items={
+            <List type={'normal'} items={
                 commands.filter((cmd): boolean => !cmd.isSubcommand).map((cmd): ListItem => {
                     return {key: cmd.name, value: cmd.description}
                 })

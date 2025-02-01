@@ -45,6 +45,21 @@
     src: local('SF Mono Bold Italic'), url('./assets/fonts/SFMonoBoldItalic.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: 800;
+    src: local('SF Mono Bold'), url('./assets/fonts/SFMonoHeavy.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'SF Mono';
+    font-style: italic;
+    font-weight: 800;
+    src: local('SF Mono Bold Italic'), url('./assets/fonts/SFMonoHeavyItalic.woff') format('woff');
+}
+
 :root {
     --font-size-small: 0.875rem;  /* 14px */
     --font-size-medium: 1rem;     /* 16px */
@@ -63,11 +78,15 @@ body{
     cursor: text;
 }
 
-.prompt .system {
+.system {
     display: inline;
     overflow-wrap: break-word;
 }
 
+#interface > .prompt:last-child::after{
+    content: '';
+    border-right: 6px solid #9f9f9fd1;
+}
 
 .prompt .user-input {
     display: inline;

@@ -172,6 +172,18 @@ const Interface: React.FC = () => {
 
     return (
         <div id="interface">
+            <div
+                className="w-full absolute flex bottom-0 left-0 items-center" hidden={!showInput}>
+                <input type="text" name="input" value={inputForm} onChange={handleInputChange} id="price"
+                       className="bg-white w-full py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6  rounded-md pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-600"
+                       placeholder="Write a prompt, or type 'help'"/>
+                <button type="button"
+                        onClick={() => setInput(inputForm)}
+                        className="text-base bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
+                >Enter
+                </button>
+            </div>
+
             <HistoryContext.Provider value={{history, setHistory, input, setInput}}>
                 {
                     history.filter((item) => {
@@ -188,17 +200,6 @@ const Interface: React.FC = () => {
                 }
             </HistoryContext.Provider>
 
-            <div
-                className="w-full absolute flex bottom-0 left-0 items-center" hidden={!showInput}>
-                <input type="text" name="input" value={inputForm} onChange={handleInputChange} id="price"
-                       className="bg-white w-full py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6  rounded-md pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-600"
-                       placeholder="Write a prompt, or type 'help'"/>
-                <button type="button"
-                        onClick={() => setInput(inputForm)}
-                        className="text-base bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
-                >Enter
-                </button>
-            </div>
         </div>
     );
 }
