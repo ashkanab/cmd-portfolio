@@ -10,12 +10,14 @@ import HeyWeather from "./projects/HeyWeather.tsx";
 import VoiceRecorder from "./projects/VoiceRecorder.tsx";
 import Nakhchin from "./projects/Nakhchin.tsx";
 import Lumina from "./projects/Lumina.tsx";
+import SkillTest from "./commands/SkillTest.tsx";
 
 const getCommands: Command[] = [
     {name: 'whoami', description: 'See my personal information', component: WhoamiCommand},
     {name: 'contact', description: 'Contact me', component: ContactCommand},
     {name: 'projects', description: 'My Projects Overview', component: ProjectCommand},
     {name: 'more', description: 'Shows more details about a project', component: MoreCommand},
+    {name: 'skills', description: 'Runs skill tests', component: SkillTest, delay: 3000},
     {name: 'history', description: 'User Prompts History', component: HistoryCommand},
     {name: 'help', description: 'List of available commands', component: HelpCommand},
     {name: 'clear', description: 'Clear console', component: ClearCommand},
