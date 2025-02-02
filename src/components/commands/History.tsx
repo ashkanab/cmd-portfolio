@@ -10,13 +10,14 @@ const HistoryCommand = () => {
     const currentHistory = valueRef.current;
 
     const count = currentHistory.length - 1;
-    let items: string[] = [];
+    let items = [];
 
     for (let i = 1; i < count; i++) {
 
-        if (currentHistory[i].prompt === ''){
+        if (currentHistory[i].prompt === '' && currentHistory[i].prompt === null){
             continue
         }
+
 
         if(i === 0){
             items.push(currentHistory[i].prompt);

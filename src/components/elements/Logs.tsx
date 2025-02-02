@@ -25,7 +25,7 @@ const Logs = () => {
     const calculateUptime = (now: Date) => {
 
         const startTime = new Date("2025-01-18T10:00:00");
-        const diffInSeconds = Math.floor((now - startTime) / 1000); // Difference in seconds
+        const diffInSeconds = Math.floor((now.getTime() - startTime.getTime()) / 1000); // Difference in seconds
         const days = Math.floor(diffInSeconds / (60 * 60 * 24));
         const hours = Math.floor((diffInSeconds % (60 * 60 * 24)) / (60 * 60));
         const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);

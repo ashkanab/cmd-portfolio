@@ -18,7 +18,7 @@ const Prompt: React.FC<{
                             {/*<span className="text-yellow font-bold px-2">/home</span>*/}
                             <span className="text-magenta font-bold px-2">$</span>
 
-                            <span>{input}
+                            <span className="user-input">{input}
                                 {
                                     autocomplete ?
                                         <span id="autocomplete">{autocomplete.slice(input?.length)}</span>
