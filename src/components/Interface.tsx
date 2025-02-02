@@ -84,7 +84,7 @@ const Interface: React.FC = () => {
                 const command = getCommands[index];
                 const Component = command.component;
                 addToHistory({prompt: input, output: <Component/>, visible: true});
-                if(command.delay != undefined && command.delay > 0){
+                if (command.delay != undefined && command.delay > 0) {
                     setShowPrompt(false);
                     setTimeout(() => {
                         setShowPrompt(true);
@@ -93,10 +93,25 @@ const Interface: React.FC = () => {
             } else if (input.trim() === '') {
                 addToHistory({prompt: '', output: '', visible: true})
             } else {
-                const error = `sh: command not found: ${input.trim()}; use command 'help' to see available commands.`;
-                addToHistory({prompt: input, output: error, visible: true});
+
+                if (input.startsWith('sudo')) {
+                    addToHistory({prompt: input, output: `sh: you're not a sudo user`, visible: true});
+                } else if (input.startsWith('cd')) {
+                    addToHistory({prompt: input, output: `sh: you're not allowed to change directory`, visible: true});
+                } else {
+                    addToHistory({
+                        prompt: input,
+                        output: `sh: command not found: ${input}; use command 'help'.`,
+                        visible: true
+                    });
+                }
             }
         }
+
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            // behavior: 'smooth',
+        });
 
         return () => {
             setInput(null);
