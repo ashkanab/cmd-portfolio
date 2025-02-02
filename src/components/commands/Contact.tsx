@@ -3,7 +3,7 @@ import Container from "../elements/Container.tsx";
 import {ListItem} from "../Types.tsx";
 
 const me: ListItem[] = [
-    {key: 'Email', value: "ashkanabdollahi19@gmail.com"},
+    {key: 'Email', value: "abdollahi.workmail@gmail.com"},
     {key: 'LinkedIn', value: "https://www.linkedin.com/in/ashkan-abdollahi-953338190/"},
     {key: 'GitHub', value: "https://github.com/ashkanab"},
     {key: 'Telegram', value: "https://telegram.me/ashkan_ab"},

@@ -3,12 +3,9 @@ import Container from "../elements/Container.tsx";
 import {ListItem} from "../Types.tsx";
 
 const me: ListItem[] = [
-    // {key: 'Role', value: 'Full-Stack | Backend Specialist'},
-    // {key: 'Skills', value: 'Laravel, PHP, Nginx, MySQL, Linux, MongoDB, Docker, React.js, RESTFul APIS, TDD'},
-    // {key: 'Location', value: 'Earth 🌍'},
-    // {key: 'Email', value: <a href="mailto:abdollahi.workmail@gmail.com">abdollahi.workmail@gmail.com</a>},
-    // {key: 'LinkedIn', value: <a target="_blank" href="https://www.linkedin.com/in/ashkan-abdollahi-953338190/">ashkan-abdollahi-953338190</a>},
-
+    {key: 'Role', value: 'Software Engineer | Backend Specialist'},
+    {key: 'Skills', value: 'Laravel, Nginx, MySQL, Linux, MongoDB, Docker, React.js, Tailwind, OOP, TDD, RESTFul APIS'},
+    {key: 'Location', value: 'Earth 🌍'},
 ]
 
 const WhoamiCommand = () => {
