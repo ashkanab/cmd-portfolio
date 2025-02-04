@@ -14,7 +14,7 @@ const Prompt: React.FC<{
                         <p className="system">
                             <span className="text-red-700 font-bold">visitor</span>
                             <span className="text-yellow font-bold">@</span>
-                            <span className="text-cyan-500 font-bold">ashkanab.me</span>
+                            <span className="text-cyan-500 font-bold">portfolio</span>
                             {/*<span className="text-yellow font-bold px-2">/home</span>*/}
                             <span className="text-magenta font-bold px-2">$</span>
 
